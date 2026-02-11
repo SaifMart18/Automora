@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automora | AI Automation Studio</title>
+    
+    <!-- SEO and Open Graph Tags -->
+    <meta name="description" content="Automora is an AI Automation Studio providing cutting-edge workflow automation, predictive analytics, and intelligent systems." />
+    <meta property="og:title" content="Automora | AI Automation Studio" />
+    <meta property="og:description" content="Transform your business with intelligent AI automation solutions." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://automora.studio" />
+    <meta property="og:image" content="https://picsum.photos/1200/630" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+      // Prevent FOUC by setting theme early
+      let theme = localStorage.getItem('theme');
+      if (!theme) {
+         theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              brand: {
+                primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+                accent: 'rgb(var(--color-accent) / <alpha-value>)',
+                highlight: 'rgb(var(--color-highlight) / <alpha-value>)',
+                text: 'rgb(var(--color-text) / <alpha-value>)'
+              }
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Light Mode Variables */
+        --color-primary: 248 250 252;   /* #F8FAFC */
+        --color-secondary: 241 245 249; /* #F1F5F9 */
+        --color-accent: 37 99 235;      /* #2563EB */
+        --color-highlight: 8 145 178;   /* #0891B2 */
+        --color-text: 15 23 42;         /* #0F172A */
+        
+        --bg-start: 248 250 252;
+        --bg-end: 226 232 240;
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --glass-border: rgba(0, 0, 0, 0.08);
+        --grid-color: rgba(0, 0, 0, 0.05);
+      }
+
+      .dark {
+        /* Dark Mode Variables */
+        --color-primary: 15 23 42;      /* #0F172A */
+        --color-secondary: 30 41 59;    /* #1E293B */
+        --color-accent: 59 130 246;     /* #3B82F6 */
+        --color-highlight: 6 182 212;   /* #06B6D4 */
+        --color-text: 241 245 249;      /* #F1F5F9 */
+        
+        --bg-start: 15 23 42;
+        --bg-end: 0 0 0;
+        --glass-bg: rgba(30, 41, 59, 0.4);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --grid-color: rgba(255, 255, 255, 0.05);
+      }
+
+      body {
+        background: linear-gradient(to bottom, rgb(var(--bg-start)), rgb(var(--bg-end)));
+        background-attachment: fixed;
+        color: rgb(var(--color-text));
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgb(var(--color-primary));
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(var(--color-secondary));
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(var(--color-accent));
+      }
+      
+      /* Glassmorphism utilities */
+      .glass-panel {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        transition: background 0.3s ease, border-color 0.3s ease;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.4",
+    "vite": "https://esm.sh/vite@^7.3.1"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
