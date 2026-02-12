@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import GlassCard from '../components/GlassCard';
 import Button from '../components/Button';
+import { useLanguage } from '../components/LanguageContext';
 
 const Contact: React.FC = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,9 +37,9 @@ const Contact: React.FC = () => {
   return (
     <div className="container mx-auto px-6 lg:px-12 animate-fade-in-up">
       <div className="pt-12 pb-16 max-w-2xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Initiate Contact</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">{t.contactPage.title}</h1>
         <p className="text-xl text-brand-text/70">
-          Ready to automate? Tell us about your operational challenges and we'll architect a solution.
+          {t.contactPage.subtitle}
         </p>
       </div>
 
@@ -50,14 +52,14 @@ const Contact: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-2">Transmission Received</h3>
-              <p className="text-brand-text/70">Our systems are analyzing your request. A human engineer will be in touch shortly.</p>
+              <h3 className="text-2xl font-bold mb-2">{t.contactPage.status.successTitle}</h3>
+              <p className="text-brand-text/70">{t.contactPage.status.successDesc}</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="name" className="text-sm font-medium text-brand-text/80">Name</label>
+                  <label htmlFor="name" className="text-sm font-medium text-brand-text/80">{t.contactPage.labels.name}</label>
                   <input 
                     type="text" 
                     id="name" 
@@ -66,11 +68,11 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     className="bg-brand-primary/50 border border-brand-text/10 rounded-xl px-4 py-3 text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors"
-                    placeholder="Jane Doe"
+                    placeholder={t.contactPage.placeholders.name}
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-sm font-medium text-brand-text/80">Email</label>
+                  <label htmlFor="email" className="text-sm font-medium text-brand-text/80">{t.contactPage.labels.email}</label>
                   <input 
                     type="email" 
                     id="email" 
@@ -79,13 +81,13 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     className="bg-brand-primary/50 border border-brand-text/10 rounded-xl px-4 py-3 text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors"
-                    placeholder="jane@company.com"
+                    placeholder={t.contactPage.placeholders.email}
                   />
                 </div>
               </div>
               
               <div className="flex flex-col gap-2">
-                <label htmlFor="company" className="text-sm font-medium text-brand-text/80">Company (Optional)</label>
+                <label htmlFor="company" className="text-sm font-medium text-brand-text/80">{t.contactPage.labels.company}</label>
                 <input 
                   type="text" 
                   id="company" 
@@ -93,12 +95,12 @@ const Contact: React.FC = () => {
                   value={formData.company}
                   onChange={handleChange}
                   className="bg-brand-primary/50 border border-brand-text/10 rounded-xl px-4 py-3 text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors"
-                  placeholder="Acme Corp"
+                  placeholder={t.contactPage.placeholders.company}
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="text-sm font-medium text-brand-text/80">Project Details</label>
+                <label htmlFor="message" className="text-sm font-medium text-brand-text/80">{t.contactPage.labels.message}</label>
                 <textarea 
                   id="message" 
                   name="message" 
@@ -107,7 +109,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   required
                   className="bg-brand-primary/50 border border-brand-text/10 rounded-xl px-4 py-3 text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-colors resize-none"
-                  placeholder="Tell us what you want to build or automate..."
+                  placeholder={t.contactPage.placeholders.message}
                 ></textarea>
               </div>
 
@@ -116,7 +118,7 @@ const Contact: React.FC = () => {
                 className="w-full mt-2"
                 disabled={status === 'submitting'}
               >
-                {status === 'submitting' ? 'Initializing...' : 'Send Message'}
+                {status === 'submitting' ? t.contactPage.status.submitting : t.contactPage.status.send}
               </Button>
             </form>
           )}

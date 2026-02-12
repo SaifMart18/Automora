@@ -15,7 +15,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
       // Prevent FOUC by setting theme early
@@ -28,6 +28,11 @@
       } else {
         document.documentElement.classList.add('dark');
       }
+
+      // Handle language/dir early if possible
+      const savedLang = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = savedLang;
+      document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +42,7 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Inter', 'IBM Plex Sans Arabic', 'sans-serif'],
             },
             colors: {
               brand: {
@@ -97,11 +102,16 @@
         background: linear-gradient(to bottom, rgb(var(--bg-start)), rgb(var(--bg-end)));
         background-attachment: fixed;
         color: rgb(var(--color-text));
-        font-family: 'Inter', sans-serif;
+        font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
         transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      /* Adjustments for Arabic typography */
+      [dir="rtl"] body {
+        font-family: 'IBM Plex Sans Arabic', sans-serif;
       }
       
       /* Custom Scrollbar */
